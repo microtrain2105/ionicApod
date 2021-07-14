@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ApodPageModule } from './apod/apod.module';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  { path: '', redirectTo: 'apod', pathMatch: 'full' },
+  { path: 'apod', loadChildren: './apod/apod.module#ApodPageModule' },
+  { path: 'apod/:date', loadChildren: './apod/apod.module#ApodPageModule' },
 ];
+
 
 @NgModule({
   imports: [
